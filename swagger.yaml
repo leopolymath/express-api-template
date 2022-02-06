@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  description: 'This API is the backend of Example'
+  version: '1.0.0'
+  title: 'Example API'
+  termsOfService: 'http://example.com/terms/'
+  contact:
+    email: 'hello@example.com'
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: http://example.com/terms/
+    description: Production server (uses live data)
+  - url: http://localhost:3000/
+    description: Local development server
+tags:
+  - name: Example API
+    description: Example API
+components:
+  schemas:
+    Hat: 
+      {
+        "properties": {
+            "description": {
+                "type": "string"
+            },
+            "external_url": {
+                "type": "string"
+            },
+            "id": {
+                "type": "string"
+            },
+            "image": {
+                "type": "string"
+            },
+            "name": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "name"
+        ],
+        "type": "object"
+      }
+paths:
+  /status:
+    get:
+      tags:
+        - ping, health, status
+      summary: Just a ping
+      responses:
+        200:
+          description: 'OK'
+  /person:
+    get:
+      tags:
+        - person information
+      summary: Return the information of a person
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 148991609094653607326581507
